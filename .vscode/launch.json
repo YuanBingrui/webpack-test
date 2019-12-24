@@ -5,13 +5,29 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}",
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**",
+        "${workspaceFolder}/dll/**"
+      ]
+    },
+    {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
-      "skipFiles": [
-        "<node_internals>/**"
+      "name": "Launch via NPM",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "debug"
       ],
-      "program": "${workspaceFolder}/index.js"
+      "skipFiles": [
+        "${workspaceFolder}/node_modules/**"
+      ],
+      "port": 9229
     }
   ]
 }
