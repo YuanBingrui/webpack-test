@@ -11,7 +11,7 @@ module.exports = function() {
     // 本地服务启动时自动打开浏览器
     open: true,
     // 当打开浏览器时指定打开的页面
-    // openPage: '/index',
+    openPage: '/home.html',
     // 开启热模块替换
     hot: true,
     // Enable gzip compression of generated files.
