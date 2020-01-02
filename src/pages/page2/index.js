@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 
 import Layout from '../../layout';
 
-import styles from './style.css';
+import styles from './style.module.css';
 
 export default function Page2() {
   return (
