@@ -1,3 +1,6 @@
 .footer {
   color: #ccc;
+  padding: 48px 0;
+  text-align: center;
+  background: rgb(88, 164, 214);
 }

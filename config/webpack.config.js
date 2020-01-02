@@ -1,5 +1,5 @@
 const paths = require('./paths');
-const webpack = require('webpack');
+// const { getEntriesPages } = require('./utils');
 // 将生成的chunk注入到html文件中
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 将js文件的内容插入到html中
@@ -38,6 +38,8 @@ const lessModuleRegex = /\.module\.(less)$/;
 module.exports = function(webpackEnv) {
   const isEnvDevelopment = webpackEnv === 'development';
   const isEnvProduction = webpackEnv === 'production';
+
+  // const entries = getEntriesPages();
 
   // common function to get style loaders
   const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -102,7 +104,7 @@ module.exports = function(webpackEnv) {
         ? 'source-map'
         : false
       : isEnvDevelopment && 'cheap-module-source-map',
-    entry: paths.appIndexJs,
+    entry: paths.appHome,
     output: {
       filename: isEnvProduction
         ? 'js/[name].[contenthash:8].js'
@@ -293,13 +295,44 @@ module.exports = function(webpackEnv) {
         manifest: paths.resolveApp(`${paths.appDll}/react.manifest.json`)
       }),
       // 将生成的chunk注入到index.html中
+      // ...(Object.keys(entries).map(entryKey => (
+      //   new HtmlWebpackPlugin({
+      //     // 传到index.ejs的参数
+      //     templateParameters: {
+      //       title: `webpack-${entryKey}`
+      //     },
+      //     template: paths.appHtml,
+      //     filename: paths.resolveApp(`${paths.appBuild}/${entryKey}.html`),
+      //     favicon: paths.resolveApp(`${paths.appPublic}/favicon.ico`),
+      //     chunks: [ entryKey, `runtime~${entryKey}` ],
+      //     ...(isEnvProduction ?
+      //       {
+      //         minify: {
+      //           removeComments: true, // 删除注释
+      //           collapseWhitespace: true, // 折叠DOM树text节点的空白
+      //           removeRedundantAttributes: true, // 当值匹配默认值时删除属性
+      //           useShortDoctype: true, // 用(HTML5）文档类型替换文档类型
+      //           removeEmptyAttributes: true, // 删除属性值为空的属性
+      //           removeStyleLinkTypeAttributes: true, // 删除style和link的 type="text/css". 其它不变
+      //           keepClosingSlash: true, // 保持尾斜杠
+      //           minifyJS: true, // 压缩script元素的js
+      //           minifyCSS: true, // 压缩style元素的css
+      //           minifyURLs: true, // 压缩url
+      //         }
+      //       } : {}
+      //     ),
+      //     ...(isEnvProduction ? { inlineSource: `runtime~${entryKey}.+\\.js` } : {}),
+      //   })
+      // ))),
       new HtmlWebpackPlugin({
         // 传到index.ejs的参数
         templateParameters: {
-          title: 'webpack-test'
+          title: `webpack-home`
         },
         template: paths.appHtml,
+        // filename: paths.resolveApp(`${paths.appBuild}/home.html`),
         favicon: paths.resolveApp(`${paths.appPublic}/favicon.ico`),
+        // chunks: [ 'home', `runtime~home` ],
         ...(isEnvProduction ?
           {
             minify: {
@@ -316,7 +349,7 @@ module.exports = function(webpackEnv) {
             }
           } : {}
         ),
-        ...(isEnvProduction ? { inlineSource: 'runtime~.+\\.js' } : {}),
+        ...(isEnvProduction ? { inlineSource: `runtime~.+\\.js` } : {}),
       }),
       // 将inlineSource参数匹配到的js文件的内容插入到html中
       isEnvProduction && new HtmlWebpackInlineSourcePlugin(),

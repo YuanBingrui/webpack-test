@@ -12,7 +12,6 @@ require('../config/env');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const configFactory = require('../config/webpack.config');
-const paths = require('../config/paths');
 
 const config = configFactory('production');
 

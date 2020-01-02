@@ -13,7 +13,8 @@ module.exports = {
   dotenv: resolveApp('.env'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.ejs'),
-  appIndexJs: resolveApp('src/index.js'),
+  appHome: resolveApp('src/pages/home/index.js'),
+  appPagePaths: resolveApp('src/pages'),
   appBuild: resolveApp(BUILD_DIR_NAME),
   appDll: resolveApp(`dll`),
   appPackageJson: resolveApp('package.json')
