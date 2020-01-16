@@ -12,8 +12,9 @@ module.exports = {
   resolveApp,
   dotenv: resolveApp('.env'),
   appPublic: resolveApp('public'),
+  appSrc: resolveApp('src'),
   appHtml: resolveApp('public/index.ejs'),
-  appIndexJs: resolveApp('src/index.js'),
+  appIndexJs: resolveApp('src/index.jsx'),
   appBuild: resolveApp(BUILD_DIR_NAME),
   appDll: resolveApp(`dll`),
   appPackageJson: resolveApp('package.json')

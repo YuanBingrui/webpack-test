@@ -1,5 +1,4 @@
 const paths = require('./paths');
-const webpack = require('webpack');
 // 将生成的chunk注入到html文件中
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // 将js文件的内容插入到html中
@@ -175,6 +174,12 @@ module.exports = function(webpackEnv) {
       runtimeChunk: {
         name: entrypoint => `runtime~${entrypoint.name}`,
       },
+    },
+    resolve: {
+      extensions: ['.jsx', '.js', '.json'],
+      alias: {
+        '@': paths.appSrc
+      }
     },
     module: {
       // makes missing exports an error instead of warning
