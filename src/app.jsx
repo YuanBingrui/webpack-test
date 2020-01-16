@@ -1,7 +1,6 @@
 import React from "react";
 
 import HelloWorld from './components/HelloWorld';
-import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -10,7 +9,6 @@ export default function App() {
       <h2>Let us to study webpack together!!!</h2>
       <div>fasdfdsfgggggffdsf</div>
       <HelloWorld/>
-      <Footer/>
     </div>
   );
 }

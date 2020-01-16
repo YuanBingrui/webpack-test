@@ -176,6 +176,12 @@ module.exports = function(webpackEnv) {
         name: entrypoint => `runtime~${entrypoint.name}`,
       },
     },
+    resolve: {
+      extensions: ['jsx', 'js', 'json'],
+      alias: {
+        '@': paths.appSrc
+      },
+    },
     module: {
       // makes missing exports an error instead of warning
       strictExportPresence: true,
